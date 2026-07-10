@@ -5,7 +5,7 @@ type Site = "software" | "quest";
 
 const Verse = ({ currentSite }: { currentSite: Site }) => {
   return (
-    <aside className="h-9 w-screen fixed top-0 left-0 right-0 z-50 bg-background flex items-start justify-between text-[0.75em] font-emphasis">
+    <aside className="h-9 w-screen fixed top-0 left-0 right-0 z-50 bg-background flex items-center justify-between text-[0.75em] font-emphasis">
       <div className="flex items-center justify-between w-full max-w-360 mx-auto px-[2%]">
         <nav className="verse-nav flex items-center gap-2">
           <div className="flex items-baseline">

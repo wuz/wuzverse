@@ -2,12 +2,6 @@
 @import "@wuz/ui/base.css";
 @source "../../../../packages/ui/src";
 
-/* ─── Site-specific design tokens ────────────────────────────────────────── */
-@theme {
-	/* Reset Tailwind defaults; palette inherited from @wuz/ui/base.css */
-	--color-*: initial;
-}
-
 /* ─── Site-specific base styles ──────────────────────────────────────────── */
 @layer base {
 	body {
@@ -33,31 +27,23 @@
 	}
 
 	body > .background {
-		position: fixed;
-		inset: 0;
-		mix-blend-mode: multiply;
-		z-index: 0;
+		@apply fixed inset-0 mix-blend-multiply z-0;
 	}
 
 	body > .content {
-		background: var(--color-background);
-		padding: 2% 5%;
-		box-shadow: 1px 3px 10px oklch(0 0 0 / 0.16);
-		border-radius: var(--radius-medium);
+		@apply bg-background rounded-medium z-1 mx-auto relative max-w-360 shadow-lg;
+		padding: 2%;
+		/* box-shadow: 1px 3px 10px oklch(0 0 0 / 0.16); */
 		height: calc(100vh - 2%);
-		max-width: 1440px;
-		margin: 0 auto;
-		position: relative;
-		z-index: 1;
 	}
 
 	a:not([class]) {
-		color: inherit;
+		@apply text-inherit;
 		text-decoration-skip-ink: auto;
 	}
 
 	a:not([class]):hover {
-		color: var(--color-brand);
+		@apply text-brand;
 		text-decoration-skip-ink: auto;
 	}
 

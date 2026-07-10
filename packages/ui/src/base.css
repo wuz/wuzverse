@@ -9,14 +9,15 @@
 /* Raw custom properties for dark-mode dynamic switching.                     */
 /* @theme aliases these so Tailwind utilities (bg-background, etc.) work.     */
 :root {
-	--color-background-raw: oklch(0.9551 0.0001 263.28);
-	--color-foreground-raw: oklch(0 0 0);
+	--foreground-color: oklch(0 0 0);
+	--background-color: oklch(0.9551 0.0001 263.28);
+	color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-background-raw: oklch(0 0 0);
-		--color-foreground-raw: oklch(0.9551 0.0001 263.28);
+		--background-color: oklch(0 0 0);
+		--foreground-color: oklch(0.9551 0.0001 263.28);
 		color-scheme: dark;
 	}
 }
@@ -25,8 +26,8 @@
 /* @theme block to reset Tailwind defaults before these take effect.           */
 @theme {
 	/* Adaptive: swap in dark mode via :root vars above */
-	--color-background: var(--color-background-raw);
-	--color-foreground: var(--color-foreground-raw);
+	--color-background: var(--background-color);
+	--color-foreground: var(--foreground-color);
 
 	/* Palette */
 	--color-muted: oklch(0.7058 0.0001 263.28);

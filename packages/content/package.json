@@ -3,9 +3,18 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json"
+	},
 	"exports": {
-		".": "./src/markdown.ts",
-		"./markdown": "./src/markdown.ts"
+		".": {
+			"types": "./dist/markdown.d.ts",
+			"import": "./dist/markdown.js"
+		},
+		"./markdown": {
+			"types": "./dist/markdown.d.ts",
+			"import": "./dist/markdown.js"
+		}
 	},
 	"dependencies": {
 		"@content-collections/core": "^0.15.2",

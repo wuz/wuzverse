@@ -6,8 +6,8 @@ tags: fabula ultima, research, homebrew, mechanics
 reddit: "https://www.reddit.com/r/fabulaultima/comments/1nfahxl/a_system_for_research_in_fabula_ultima_has_been/"
 ---
 
-*Thanks to [Matt](https://bsky.app/profile/krasiph.bsky.social) for editing
-these rules and adding some clarifying language.*
+_Thanks to [Matt](https://bsky.app/profile/krasiph.bsky.social) for editing
+these rules and adding some clarifying language._
 
 [Skip the exposition, just show me the rules](#research-rolls)
 
@@ -39,7 +39,7 @@ Projects or the Gourmet class delicacies/ingredients.
 There were some core differences however, since I want research to be available
 to all characters, regardless of class.
 Additionally, the research system felt like it should live somewhere between a
-single roll and a full *project*.
+single roll and a full _project_.
 As I looked for inspiration, I found it in a somewhat unexpected place &mdash;
 the travel roll.
 
@@ -85,7 +85,7 @@ Finally, it's worth remembering that just because the group researches a topic,
 that doesn't mean that they get straightforward answers - sometimes the research
 is wrong, incomplete, or out-dated.
 It's always up to the Game Master how much information the group acquires, but
-all information they receive should move the story forward in some way *and*
+all information they receive should move the story forward in some way _and_
 feel rewarding for the groups effort.
 
 Without further ado, here is the system I made for running research rolls in
@@ -97,8 +97,8 @@ Fabula Ultima:
 
 ## Compatible with Fabula Ultima
 
-*Published under the
-[Fabula Ultima Third-Party Tabletop License 1.0](https://need.games/wp-content/uploads/2024/06/Fabula-Ultima-Third-Party-Tabletop-License-1.0.pdf)*
+_Published under the
+[Fabula Ultima Third-Party Tabletop License 1.0](https://need.games/wp-content/uploads/2024/06/Fabula-Ultima-Third-Party-Tabletop-License-1.0.pdf)_
 
 ## Research
 
@@ -143,13 +143,13 @@ somewhere that information might be found instead.
 
 ## Depth
 
-| Sample Topics | Research Depth | Research Roll |
-|-|-|-|
-| General lore, widely written about topics, specific facts about the world, high-school level knowledge | Common | d6 |
-| Specific lore, lesser known world facts, specific facts about a well-known place, college-level knowledge | Niche | d8 |
-| Complex lore, graduate-level knowledge, specific facts about a known but mysterious place | Expert | d10 |
-| Forgotten lore, esoteric research, specific facts about an hidden place, specialist-level knowledge | Deep | d12 |
-| Chthonic lore, specific facts about a completely unknown place, unknown or unknowable knowledge | Eldritch | d20 |
+| Sample Topics                                                                                             | Research Depth | Research Roll |
+| --------------------------------------------------------------------------------------------------------- | -------------- | ------------- |
+| General lore, widely written about topics, specific facts about the world, high-school level knowledge    | Common         | d6            |
+| Specific lore, lesser known world facts, specific facts about a well-known place, college-level knowledge | Niche          | d8            |
+| Complex lore, graduate-level knowledge, specific facts about a known but mysterious place                 | Expert         | d10           |
+| Forgotten lore, esoteric research, specific facts about an hidden place, specialist-level knowledge       | Deep           | d12           |
+| Chthonic lore, specific facts about a completely unknown place, unknown or unknowable knowledge           | Eldritch       | d20           |
 
 - **On a 12 or higher**, this research yields dangerous knowledge.
 - **On a 6-11**, this research yields an unexpected hurdle.

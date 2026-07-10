@@ -20,18 +20,9 @@ export const metadata: Metadata = {
 	description: "Senior Frontend Engineer. Typescripter. TTRPG-er",
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html
-			lang="en"
-			style={
-				{ "--font-redaction": redaction.style.fontFamily } as CSSProperties
-			}
-		>
+		<html lang="en" style={{ "--font-redaction": redaction.style.fontFamily } as CSSProperties}>
 			<head>
 				<Favicon />
 				<Script

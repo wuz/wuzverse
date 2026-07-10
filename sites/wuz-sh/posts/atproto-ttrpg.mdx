@@ -24,10 +24,10 @@ Here is the full regex I started with, but we'll break it down a little bit to c
 ```
 
 <figure style={{ "--aspectRatio": "16/9" }}>
-  <img
-    src="/post_imgs/skyfeed-builder.png"
-    alt="Skyfeed builder screenshot showing the above regex"
-  />
+	<img
+		src="/post_imgs/skyfeed-builder.png"
+		alt="Skyfeed builder screenshot showing the above regex"
+	/>
 </figure>
 
 ## Hack 1: Using word boundaries
@@ -134,19 +134,19 @@ const envPath = path.resolve(__dirname, "../../.env.local");
 dotenv.config({ path: envPath });
 
 const dialect = new MysqlDialect({
-  pool: createPool(process.env.DATABASE_URL ?? ""),
+	pool: createPool(process.env.DATABASE_URL ?? ""),
 });
 
 export const createDb = async (): Promise<Database> => {
-  return new Kysely<DatabaseSchema>({
-    dialect,
-  });
+	return new Kysely<DatabaseSchema>({
+		dialect,
+	});
 };
 
 export const migrateToLatest = async (db: Database) => {
-  const migrator = new Migrator({ db, provider: migrationProvider });
-  const { error } = await migrator.migrateToLatest();
-  if (error) throw error;
+	const migrator = new Migrator({ db, provider: migrationProvider });
+	const { error } = await migrator.migrateToLatest();
+	if (error) throw error;
 };
 
 export type Database = Kysely<DatabaseSchema>;
@@ -172,10 +172,10 @@ import path from "path";
 ### Updating the local env
 
 <center>
-  <img
-    src="/post_imgs/planetscale-connection-button.png"
-    alt="The Planetscale button for connection strings"
-  />
+	<img
+		src="/post_imgs/planetscale-connection-button.png"
+		alt="The Planetscale button for connection strings"
+	/>
 </center>
 
 **_This post is still in progress!_**

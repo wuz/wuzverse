@@ -93,7 +93,7 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-export const DitherShader: React.FC<DitherShaderProps> = ({
+const DitherShader: React.FC<DitherShaderProps> = ({
   src,
   gridSize = 4,
   ditherMode = "bayer",
@@ -249,7 +249,7 @@ export const DitherShader: React.FC<DitherShaderProps> = ({
                   luminance + (ditherThreshold - 0.5) * 0.5;
                 const paletteIndex = Math.floor(
                   clamp(adjustedLuminance, 0, 1) *
-                  (parsedCustomPalette.length - 1),
+                    (parsedCustomPalette.length - 1),
                 );
                 outputColor = parsedCustomPalette[paletteIndex];
               }
@@ -459,3 +459,5 @@ export const DitherShader: React.FC<DitherShaderProps> = ({
     </div>
   );
 };
+
+export default DitherShader;

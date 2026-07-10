@@ -5,11 +5,7 @@ const normalizeSrc = (src: string) => {
 	return src.startsWith("/") ? src.slice(1) : src;
 };
 
-export default function cloudflareLoader({
-	src,
-	width,
-	quality,
-}: ImageLoaderProps) {
+export default function cloudflareLoader({ src, width, quality }: ImageLoaderProps) {
 	if (process.env.NODE_ENV === "development") {
 		// Serve the original image when using `next dev`
 		return src;

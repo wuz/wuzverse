@@ -1,5 +1,3 @@
-"use server";
-
 const LASTFM_USER = "hasbeenwizard";
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0/";
 
@@ -17,13 +15,11 @@ type LastFmResponse = {
 	};
 };
 
-export async function getNowPlaying(): Promise<LastFmTrack | null> {
-	const apiKey = process.env.LASTFM_API_KEY;
-	if (!apiKey) return null;
-
+export async function getNowPlaying(apiKey: string): Promise<LastFmTrack | null> {
 	try {
 		const res = await fetch(
 			`${LASTFM_API}?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${apiKey}&format=json&limit=1`,
+			{ next: { revalidate: 60 } },
 		);
 		if (!res.ok) return null;
 

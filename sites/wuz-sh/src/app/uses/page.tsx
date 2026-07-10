@@ -1,10 +1,4 @@
-import {
-	GridBreakout,
-	GridLayout,
-	GridLeft,
-	GridRight,
-	GridFull,
-} from "@/components/grid-layout";
+import { GridBreakout, GridLayout, GridLeft, GridRight, GridFull } from "@/components/grid-layout";
 import Image from "next/image";
 import walkaway from "./walkaway.png";
 import AutoGrid from "@/components/auto-grid";

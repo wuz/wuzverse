@@ -11,10 +11,7 @@ to run our server through the esoteric `react-scripts` has gotten worse and wors
 To top it all off, lately my local dev server has been crashing with a Javascript OOM error.
 
 <figure className="full-bleed">
-  <img
-    alt="The out of memory error from Create React App"
-    src="/post_imgs/heap-oom-error.png"
-  />
+	<img alt="The out of memory error from Create React App" src="/post_imgs/heap-oom-error.png" />
 </figure>
 
 I've always had a bit of a love/hate relationship with Create React App - I think it's a good way to get an app started, but as you
@@ -72,11 +69,11 @@ Next, I set up `vite.config.ts`:
 import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/public/" : "",
-  build: {
-    outDir: "build",
-    assetsDir: "static",
-  },
+	base: mode === "production" ? "/public/" : "",
+	build: {
+		outDir: "build",
+		assetsDir: "static",
+	},
 }));
 ```
 
@@ -91,11 +88,11 @@ and update the config:
 import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/public/" : "",
-  build: {
-    outDir: "build",
-    assetsDir: "static",
-  },
+	base: mode === "production" ? "/public/" : "",
+	build: {
+		outDir: "build",
+		assetsDir: "static",
+	},
 }));
 ```
 

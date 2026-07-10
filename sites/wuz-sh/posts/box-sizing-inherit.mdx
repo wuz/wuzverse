@@ -17,18 +17,24 @@ Based on
 post, I decided to use
 
 ```css
-html, :host {
-  box-sizing: border-box;
+html,
+:host {
+	box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 ```
+
 instead of the usual:
 
 ```css
-*, *:before, &:after {
-  box-sizing: border-box;
+*,
+*:before,
+&:after {
+	box-sizing: border-box;
 }
 ```
 

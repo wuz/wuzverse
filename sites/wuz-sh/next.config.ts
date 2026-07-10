@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	output: "standalone",
 	serverExternalPackages: ["shiki", "twoslash"],
-
 };
 
 module.exports = withContentCollections(nextConfig);

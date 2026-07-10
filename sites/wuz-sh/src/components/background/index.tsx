@@ -161,8 +161,7 @@ function DitheredWaves({
 		waveUniformsRef.current.waveFrequency.value = waveFrequency;
 		waveUniformsRef.current.waveAmplitude.value = waveAmplitude;
 		waveUniformsRef.current.waveColor.value.set(...waveColor);
-		waveUniformsRef.current.enableMouseInteraction.value =
-			enableMouseInteraction ? 1 : 0;
+		waveUniformsRef.current.enableMouseInteraction.value = enableMouseInteraction ? 1 : 0;
 		waveUniformsRef.current.mouseRadius.value = mouseRadius;
 		if (enableMouseInteraction) {
 			waveUniformsRef.current.mousePos.value.set(mousePos.x, mousePos.y);

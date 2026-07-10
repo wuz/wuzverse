@@ -1,0 +1,36 @@
+{
+	"name": "@wuz/content",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/markdown.ts",
+		"./markdown": "./src/markdown.ts"
+	},
+	"dependencies": {
+		"@content-collections/core": "^0.15.2",
+		"@shikijs/rehype": "^4.2.0",
+		"@shikijs/transformers": "^4.2.0",
+		"@shikijs/twoslash": "^4.2.0",
+		"cheerio": "^1.1.2",
+		"rehype-stringify": "^10.0.1",
+		"remark-custom-header-id": "^1.0.0",
+		"remark-directive": "^4.0.0",
+		"remark-frontmatter": "^5.0.0",
+		"remark-gfm": "^4.0.1",
+		"remark-parse": "^11.0.0",
+		"remark-rehype": "^11.1.2",
+		"ts-pattern": "^5.8.0",
+		"unified": "^11.0.5",
+		"unist-util-visit": "^5.0.0"
+	},
+	"devDependencies": {
+		"@types/mdast": "^4.0.4",
+		"@types/node": "^26.0.0",
+		"typescript": "^6.0.3",
+		"vfile": "^6.0.3"
+	},
+	"peerDependencies": {
+		"react": ">=19"
+	}
+}

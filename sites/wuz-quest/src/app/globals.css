@@ -1,187 +1,185 @@
 @import "tailwindcss";
+@import "@wuz/ui/base.css";
+@source "../../../../packages/ui/src";
 
+/* ─── Site-specific design tokens ────────────────────────────────────────── */
+/* wuz-quest extends the base palette with a faded foreground variant.        */
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
-	--foreground-faded: #444444;
-}
-
-@theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-foreground-faded: var(--foreground-faded);
-	--font-sans: system-ui;
-	--font-mono: var(--font-commit-mono);
+	--color-foreground-faded-raw: oklch(0.6121 0.0214 276.1);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-		--foreground-faded: var(--color-neutral-500);
+		--color-foreground-faded-raw: oklch(0.7432 0.0204 276.2);
 	}
 }
 
-body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
+@theme {
+	/* Reset Tailwind defaults; palette inherited from @wuz/ui/base.css */
+	--color-*: initial;
+	--color-foreground-faded: var(--color-foreground-faded-raw);
 }
 
-a {
-	@apply text-pink-500 hover:underline;
-}
+/* ─── Site-specific base styles ──────────────────────────────────────────── */
+@layer base {
+	body {
+		background: var(--color-background);
+		padding-top: 36px;
+		/* height of Verse bar */
+	}
 
-.markdown {
-	@apply leading-relaxed space-y-4 text-foreground tabular-nums;
-}
-
-.markdown p,
-.markdown ul,
-.markdown ol,
-.markdown blockquote {
-}
-
-.markdown h1 {
-	@apply leading-snug font-semibold text-2xl;
-
-	&:before {
-		content: "# ";
-		@apply text-pink-900;
+	a {
+		@apply text-brand hover:underline;
 	}
 }
 
-.markdown h2 {
-	@apply leading-snug font-semibold text-xl;
-
-	&:before {
-		content: "## ";
-		@apply text-pink-900;
-	}
-}
-
-.markdown h3 {
-	@apply leading-snug font-semibold text-lg;
-
-	&:before {
-		content: "### ";
-		@apply text-pink-900;
-	}
-}
-
-.markdown h4 {
-	@apply leading-snug font-semibold;
-
-	&:before {
-		content: "#### ";
-		@apply text-pink-900;
-	}
-}
-
-.markdown table {
-	@apply table-auto;
-}
-
-.markdown table td {
-	@apply border-1 p-2 border-neutral-700;
-}
-
-.markdown table th {
-	@apply border-1 font-semibold p-2 text-pink-500 border-neutral-700;
-}
-
-.markdown ul {
-	@apply list-disc ml-6 py-3;
-}
-
-.markdown ol {
-	@apply list-decimal ml-6 py-3;
-}
-
-.markdown ul li {
-}
-
-.orchestration {
-	counter-reset: orchestration;
-}
-
-.orchestration > * {
-	counter-increment: orchestration;
-	animation: enter 0.6s ease both;
-	animation-delay: calc(var(--delay) * var(--stagger));
-	--delay: 100ms;
-}
-
-@keyframes enter {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
+@layer components {
+	/* stagger-animated entry for page sections */
+	.orchestration {
+		counter-reset: orchestration;
 	}
 
-	to {
-		opacity: 1;
-		transform: translateY(0);
+	.orchestration > * {
+		counter-increment: orchestration;
+		animation: enter 0.6s ease both;
+		animation-delay: calc(var(--delay) * var(--stagger));
+		--delay: 100ms;
 	}
-}
 
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*:before,
-	*:after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
+	@keyframes enter {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
-}
 
-.callout {
-	@apply bg-pink-800 text-white p-4 m-4 rounded-sm;
-}
-
-.callout h1,
-.callout h2,
-.callout h3,
-.callout h4,
-.callout h5,
-.callout h6 {
-	@apply font-black uppercase;
-
-	&::before {
-		content: "";
+	/* markdown rendered content */
+	.markdown {
+		@apply leading-relaxed space-y-4 text-foreground tabular-nums;
 	}
-}
 
-.fabula-ultima {
-	@apply font-sans border-l-8 border-pink-800 space-y-3 bg-neutral-200 dark:bg-neutral-800 pb-4;
-}
-
-.fabula-ultima p,
-.fabula-ultima table {
-	@apply mx-4;
-}
-
-.fabula-ultima h1,
-.fabula-ultima h2,
-.fabula-ultima h3,
-.fabula-ultima h4,
-.fabula-ultima h5,
-.fabula-ultima h6 {
-	@apply font-black font-serif text-white;
-
-	&::before {
-		content: "";
+	.markdown small {
+		@apply text-xs;
 	}
-}
 
-.fabula-ultima h1 {
-	@apply uppercase bg-pink-950 text-3xl p-2;
-}
+	.markdown h1 {
+		@apply leading-snug font-semibold text-2xl;
 
-.fabula-ultima h2 {
-	@apply border-b-1 border-pink-800 p-2 bg-gradient-to-r from-pink-800 to-transparent;
-}
+		&:before {
+			content: "# ";
+			@apply text-overcast;
+		}
+	}
 
-.fabula-ultima h3 {
-	@apply bg-pink-800/40 py-1 px-2 uppercase font-sans;
+	.markdown h2 {
+		@apply leading-snug font-semibold text-xl;
+
+		&:before {
+			content: "## ";
+			@apply text-overcast;
+		}
+	}
+
+	.markdown h3 {
+		@apply leading-snug font-semibold text-lg;
+
+		&:before {
+			content: "### ";
+			@apply text-overcast;
+		}
+	}
+
+	.markdown h4 {
+		@apply leading-snug font-semibold;
+
+		&:before {
+			content: "#### ";
+			@apply text-overcast;
+		}
+	}
+
+	.markdown table {
+		@apply table-auto;
+	}
+
+	.markdown table td {
+		@apply border-1 p-2 border-overcast;
+	}
+
+	.markdown table th {
+		@apply border-1 font-semibold p-2 text-brand border-overcast;
+	}
+
+	.markdown ul {
+		@apply list-disc ml-6 py-3;
+	}
+
+	.markdown ol {
+		@apply list-decimal ml-6 py-3;
+	}
+
+	.markdown .footnotes {
+		@apply text-sm border-t py-4;
+	}
+
+	.markdown blockquote {
+		@apply p-4 border-l-4 border-brand font-mono;
+	}
+
+	/* TTRPG directive components */
+	.callout {
+		@apply bg-brand text-snow-crash p-4 m-4 rounded-sm;
+	}
+
+	.callout h1,
+	.callout h2,
+	.callout h3,
+	.callout h4,
+	.callout h5,
+	.callout h6 {
+		@apply font-black uppercase;
+
+		&::before {
+			content: "";
+		}
+	}
+
+	.fabula-ultima {
+		@apply font-sans border-l-8 border-brand space-y-3 bg-snow-crash dark:bg-terminal-dreams pb-4;
+	}
+
+	.fabula-ultima p,
+	.fabula-ultima table {
+		@apply mx-4;
+	}
+
+	.fabula-ultima h1,
+	.fabula-ultima h2,
+	.fabula-ultima h3,
+	.fabula-ultima h4,
+	.fabula-ultima h5,
+	.fabula-ultima h6 {
+		@apply font-black font-serif text-snow-crash;
+
+		&::before {
+			content: "";
+		}
+	}
+
+	.fabula-ultima h1 {
+		@apply uppercase bg-shadow-aura text-3xl p-2;
+	}
+
+	.fabula-ultima h2 {
+		@apply border-b-1 border-brand p-2 bg-gradient-to-r from-brand to-transparent;
+	}
+
+	.fabula-ultima h3 {
+		@apply bg-brand/40 py-1 px-2 uppercase font-sans;
+	}
 }

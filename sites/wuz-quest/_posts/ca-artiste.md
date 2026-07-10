@@ -6,7 +6,6 @@ date: "2025-11-14"
 reddit: https://www.reddit.com/r/fabulaultima/comments/1ocfus2/the_artiste_class_creative_summoner_class/
 ---
 
-
 # Clockwork Atlas
 
 > This post is a work-in-progress of a Fabula Ultima atlas I'm working on in my
@@ -23,7 +22,7 @@ I have a couple goals with this class:
 2. **No bogging down combat with tons of turns/actions for your summons.** This
    class should feel as quick and easy to play as any other class.
 3. **Two possible "tracks" for this class.** You can either go for lots of
-   summons that do their own thing *or* use your summons to bolster yourself and
+   summons that do their own thing _or_ use your summons to bolster yourself and
    allies.
 
 ---
@@ -34,7 +33,7 @@ I have a couple goals with this class:
 
 ## ALSO: Creator, Imbuer, Drafter
 
-An *Artiste* has learned to divide a small piece of their soul into everything
+An _Artiste_ has learned to divide a small piece of their soul into everything
 they create.
 Some Artistes use paint, others use the written word, and still others create
 their art in a unique way.
@@ -108,7 +107,7 @@ Your Créations now deal either light or dark damage.
 
 **Damage:** 1 light damage
 
-*The power of Création made physical.*
+_The power of Création made physical._
 
 ### Création Attack
 
@@ -143,7 +142,7 @@ target.
 
 ## ALSO: Creator, Imbuer, Drafter
 
-An *Artiste* has learned to divide a small piece of their soul into everything
+An _Artiste_ has learned to divide a small piece of their soul into everything
 they create.
 Some Artistes use paint, others use the written word, and still others create
 their art in a unique way.
@@ -256,7 +255,7 @@ You draft a Création to the field.
 
 **Damage:** 1
 
-*The power of Création made physical.*
+_The power of Création made physical._
 
 On your turn, you can use an action to attack with all the Créations you have
 summoned.

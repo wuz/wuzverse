@@ -1,0 +1,11 @@
+{
+	"$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/oxc_linter/src/schemas/oxlint.schema.json",
+	"ignore_patterns": [
+		"**/node_modules/**",
+		"**/.next/**",
+		"**/.open-next/**",
+		"**/.wrangler/**",
+		"**/.content-collections/**"
+	],
+	"rules": {}
+}

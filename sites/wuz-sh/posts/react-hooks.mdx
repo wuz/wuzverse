@@ -102,21 +102,21 @@ A null workInProgressHook means we aren't currently building a hook. That means 
 ```js
 // This is the first hook in the list
 if (firstWorkInProgressHook === null) {
-  isReRender = false;
-  currentHook = firstCurrentHook;
-  if (currentHook === null) {
-    // This is a newly mounted hook
-    workInProgressHook = createHook();
-  } else {
-    // Clone the current hook.
-    workInProgressHook = cloneHook(currentHook);
-  }
-  firstWorkInProgressHook = workInProgressHook;
+	isReRender = false;
+	currentHook = firstCurrentHook;
+	if (currentHook === null) {
+		// This is a newly mounted hook
+		workInProgressHook = createHook();
+	} else {
+		// Clone the current hook.
+		workInProgressHook = cloneHook(currentHook);
+	}
+	firstWorkInProgressHook = workInProgressHook;
 } else {
-  // There's already a work-in-progress. Reuse it.
-  isReRender = true;
-  currentHook = firstCurrentHook;
-  workInProgressHook = firstWorkInProgressHook;
+	// There's already a work-in-progress. Reuse it.
+	isReRender = true;
+	currentHook = firstCurrentHook;
+	workInProgressHook = firstWorkInProgressHook;
 }
 ```
 
@@ -126,11 +126,11 @@ The next if statement down:
 
 ```js
 if (currentHook === null) {
-  // This is a newly mounted hook
-  workInProgressHook = createHook();
+	// This is a newly mounted hook
+	workInProgressHook = createHook();
 } else {
-  // Clone the current hook.
-  workInProgressHook = cloneHook(currentHook);
+	// Clone the current hook.
+	workInProgressHook = cloneHook(currentHook);
 }
 ```
 
@@ -173,17 +173,17 @@ If there isn't one, we should create a new hook and append it to the list, which
 isReRender = false;
 let hook;
 if (currentHook === null) {
-  // This is a newly mounted hook
-  hook = createHook();
+	// This is a newly mounted hook
+	hook = createHook();
 } else {
-  currentHook = currentHook.next;
-  if (currentHook === null) {
-    // This is a newly mounted hook
-    hook = createHook();
-  } else {
-    // Clone the current hook.
-    hook = cloneHook(currentHook);
-  }
+	currentHook = currentHook.next;
+	if (currentHook === null) {
+		// This is a newly mounted hook
+		hook = createHook();
+	} else {
+		// Clone the current hook.
+		hook = cloneHook(currentHook);
+	}
 }
 // Append to the end of the list
 workInProgressHook = workInProgressHook.next = hook;

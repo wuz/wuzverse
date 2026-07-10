@@ -1,0 +1,6 @@
+[languages]
+bash = ["shfmt -"]
+sh = ["shfmt -"]
+javascript = ["biome format --stdin-file-path=stdin.js"]
+typescript = ["biome format --stdin-file-path=stdin.ts"]
+json = ["biome format --stdin-file-path=stdin.json"]

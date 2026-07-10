@@ -26,23 +26,27 @@ A typical `useQuery` looks something like this:
 
 ```tsx
 const DataComponent = ({ id }) => {
-  const { data, loading, error } = useQuery(GET_DATA, {
-    variables: {
-        id,
-      }
-  });
+	const { data, loading, error } = useQuery(GET_DATA, {
+		variables: {
+			id,
+		},
+	});
 
-  if(loading) {
-    return <Spinner />
-  }
+	if (loading) {
+		return <Spinner />;
+	}
 
-  if(error) {
-    return <Error />
-  }
+	if (error) {
+		return <Error />;
+	}
 
-  return (<div>
-    {data?.map((item) => <RenderItem item={item} />)}
-  </div>);
+	return (
+		<div>
+			{data?.map((item) => (
+				<RenderItem item={item} />
+			))}
+		</div>
+	);
 };
 ```
 
@@ -57,19 +61,23 @@ A typical `useSuspenseQuery` looks something like this:
 
 ```tsx
 const DataComponent = ({ id }) => {
-  const { data, error } = useSuspenseQuery(GET_DATA, {
-    variables: {
-        id,
-      }
-  });
+	const { data, error } = useSuspenseQuery(GET_DATA, {
+		variables: {
+			id,
+		},
+	});
 
-  if(error) {
-    return <Error />
-  }
+	if (error) {
+		return <Error />;
+	}
 
-  return (<div>
-    {data?.map((item) => <RenderItem item={item} />)}
-  </div>);
+	return (
+		<div>
+			{data?.map((item) => (
+				<RenderItem item={item} />
+			))}
+		</div>
+	);
 };
 ```
 
@@ -77,12 +85,12 @@ Instead of a `loading` prop that renders a Spinner, we can wrap this component
 in a `<Suspense>` boundary:
 
 ```tsx
-const Parent = ({id}) => {
-  return (
-    <Suspense fallback={<Spinner />}>
-      <DataComponent id={id} />
-    </Suspense>
-  );
+const Parent = ({ id }) => {
+	return (
+		<Suspense fallback={<Spinner />}>
+			<DataComponent id={id} />
+		</Suspense>
+	);
 };
 ```
 
@@ -108,24 +116,24 @@ I'll be using `useSuspenseQuery` moving forward.
 
 ```tsx
 type SuspendableComponentProps = {
-  id: string;
+	id: string;
 };
 
-const SuspendableComponent = ({id}: SuspendableComponentProps) => {
-  const {data } = useSuspenseQuery(QUERY, {
-    variables: {
-      id,
-      }
-    });
-  return <>{JSON.stringify(data, null, 2)}</>
+const SuspendableComponent = ({ id }: SuspendableComponentProps) => {
+	const { data } = useSuspenseQuery(QUERY, {
+		variables: {
+			id,
+		},
+	});
+	return <>{JSON.stringify(data, null, 2)}</>;
 };
 
 const SuspendedComponent = (props: SuspendableComponentProps) => {
-  return (
-    <Suspense fallback={<Loader />}>
-      <SuspendableComponent {...props} />
-    </Suspense>
-  );
+	return (
+		<Suspense fallback={<Loader />}>
+			<SuspendableComponent {...props} />
+		</Suspense>
+	);
 };
 
 export default SuspendedComponent;

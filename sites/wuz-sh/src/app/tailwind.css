@@ -1,295 +1,100 @@
 @import "tailwindcss";
+@import "@wuz/ui/base.css";
+@source "../../../../packages/ui/src";
 
+/* ─── Site-specific design tokens ────────────────────────────────────────── */
 @theme {
-  --color-*: initial;
-  --color-foreground: rgb(0, 0, 0);
-  --color-background: rgb(240, 240, 240);
-  --color-muted: rgb(160, 160, 160);
-  --color-brand: rgb(255, 44, 117);
-  --color-relay-red: rgb(255, 95, 92);
-  --color-hacker-pink: rgb(255, 44, 117);
-  --color-purple-ping: rgb(190, 115, 255);
-  --color-electric-blue: rgb(115, 255, 255);
-  --color-overcast: rgb(128, 131, 145);
-  --color-gray-haze: rgb(209, 226, 232);
-  --color-snow-crash: rgb(241, 241, 241);
-  --color-shadow-aura: rgb(11, 25, 31);
-  --color-terminal-dreams: rgb(0, 0, 0);
-
-  --radius-small: 8px;
-  --radius-medium: 12px;
-
-  --font-body: 'Public Sans Variable', sans-serif;
-  --font-mono: 'Source Code Pro Variable', monospace;
-  /* --font-emphasis is set via next/font in layout.tsx as --font-redaction */
-  --font-emphasis: var(--font-redaction);
+	/* Reset Tailwind defaults; palette inherited from @wuz/ui/base.css */
+	--color-*: initial;
 }
 
-/* ─── Design tokens ──────────────────────────────────────────────────────── */
+/* ─── Site-specific base styles ──────────────────────────────────────────── */
 @layer base {
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-foreground: rgb(240, 240, 240);
-      --color-background: rgb(0, 0, 0);
-      color-scheme: dark;
-    }
-  }
+	body {
+		/* pastel-palette: oklch equivalents of #FF9AA2 #FFB7B2 #FFDAC1 #E2F0CB #B5EAD7 #C7CEEA — also used in logo/index.tsx SVG gradient */
+		background: linear-gradient(
+			45deg,
+			oklch(0.7922 0.1211 15.06),
+			oklch(0.8453 0.0845 23.43),
+			oklch(0.9131 0.0531 55.96),
+			oklch(0.9351 0.051 124.32),
+			oklch(0.8951 0.0602 171.01),
+			oklch(0.8548 0.0397 274.4),
+			oklch(0.8355 0.1071 321.71),
+			oklch(0.7922 0.1211 15.06),
+			oklch(0.8453 0.0845 23.43),
+			oklch(0.9131 0.0531 55.96),
+			oklch(0.9351 0.051 124.32),
+			oklch(0.8951 0.0602 171.01),
+			oklch(0.8548 0.0397 274.4)
+		);
+		padding: 2%;
+		padding-top: calc(36px + 2%);
+	}
+
+	body > .background {
+		position: fixed;
+		inset: 0;
+		mix-blend-mode: multiply;
+		z-index: 0;
+	}
+
+	body > .content {
+		background: var(--color-background);
+		padding: 2% 5%;
+		box-shadow: 1px 3px 10px oklch(0 0 0 / 0.16);
+		border-radius: var(--radius-medium);
+		height: calc(100vh - 2%);
+		max-width: 1440px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+
+	a:not([class]) {
+		color: inherit;
+		text-decoration-skip-ink: auto;
+	}
+
+	a:not([class]):hover {
+		color: var(--color-brand);
+		text-decoration-skip-ink: auto;
+	}
+
+	.whatnot-yellow,
+	.whatnot-yellow:visited {
+		color: oklch(0.8912 0.185 99.61);
+	}
 }
 
-/* ─── Global reset & base styles ─────────────────────────────────────────── */
-@layer base {
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  @media (prefers-reduced-motion) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  figure,
-  blockquote,
-  dl,
-  dd {
-    margin-block-end: 0;
-  }
-
-  ul[role='list'],
-  ol[role='list'] {
-    list-style: none;
-    padding: 0;
-  }
-
-  ul,
-  ol {
-    padding: 0;
-    margin: 0;
-    padding-inline-start: 2ch;
-  }
-
-  li {
-    margin-bottom: 1ch;
-  }
-
-  html:focus-within {
-    scroll-behavior: smooth;
-  }
-
-  img,
-  picture {
-    max-width: 100%;
-    display: block;
-  }
-
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-  }
-
-  html {
-    height: auto;
-  }
-
-  html,
-  body {
-    margin: 0;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-
-  body {
-    min-height: 100vh;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
-    font-family: var(--font-body);
-    font-variation-settings: '"ital" 0, "wght" 300';
-    /* pastel-palette: #FF9AA2 #FFB7B2 #FFDAC1 #E2F0CB #B5EAD7 #C7CEEA — also used in logo/index.tsx SVG gradient */
-    background: linear-gradient(45deg,
-        #ff9aa2, #ffb7b2, #ffdac1, #e2f0cb, #b5ead7, #c7ceea,
-        #eab2f3, #ff9aa2, #ffb7b2, #ffdac1, #e2f0cb, #b5ead7, #c7ceea);
-    font-weight: 300;
-    color: rgb(var(--color-foreground));
-    padding: 2%;
-    padding-top: calc(36px + 2%);
-    font-size: 18px;
-  }
-
-  body>.background {
-    position: fixed;
-    inset: 0;
-    mix-blend-mode: multiply;
-    z-index: 0;
-  }
-
-  body>.content {
-    background: var(--color-background);
-    padding: 2% 5%;
-    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.16);
-    border-radius: var(--radius-medium);
-    height: calc(100vh - 2%);
-    max-width: 1440px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  a:not([class]) {
-    color: inherit;
-    text-decoration-skip-ink: auto;
-  }
-
-  a:not([class]):hover {
-    color: var(--color-brand);
-    text-decoration-skip-ink: auto;
-  }
-
-  em {
-    font-variation-settings: '"ital" 1';
-    font-style: italic;
-    font-family: var(--font-emphasis);
-  }
-
-  .font-redaction {
-    font-variation-settings: '"ital" 1';
-    font-style: italic;
-    font-family: var(--font-emphasis);
-  }
-
-  p {
-    width: 100%;
-    max-width: 60ch;
-  }
-
-  p+p {
-    margin-top: 1em;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-size: revert;
-    font-weight: revert;
-    line-height: 1.2;
-  }
-
-  pre {
-    counter-reset: line;
-  }
-
-  pre>code {
-    display: grid;
-    overflow: auto;
-    padding: 16px;
-  }
-
-  code>[data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 1rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: gray;
-  }
-
-  code[data-line-numbers-max-digits='2']>[data-line]::before {
-    width: 2rem;
-  }
-
-  code[data-line-numbers-max-digits='3']>[data-line]::before {
-    width: 3rem;
-  }
-
-  [style*='--aspectRatio'] {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-  }
-
-  [style*='--aspectRatio']>img {
-    height: auto;
-  }
-
-  blockquote {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-    border-left: 2px solid var(--color-brand);
-    margin: 16px 0;
-    padding: 16px;
-    gap: 8px;
-  }
-
-  hr {
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--color-foreground);
-    padding: 0;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-
-  .whatnot-yellow,
-  .whatnot-yellow:visited {
-    color: rgb(249 220 0);
-  }
-}
-
-/* ─── Component-scoped styles ────────────────────────────────────────────── */
+/* ─── Site-specific component styles ─────────────────────────────────────── */
 @layer components {
+	/* content-grid child placement */
+	.content-grid > * {
+		grid-column: 2;
+	}
 
-  /* content-grid child placement */
-  .content-grid>* {
-    grid-column: 2;
-  }
+	.content-grid > * + * {
+		margin-top: 0.8em;
+	}
 
-  .content-grid>*+* {
-    margin-top: 0.8em;
-  }
+	.full-bleed,
+	.shiki {
+		width: 100%;
+		grid-column: 1 / 4;
+		margin: 1.5em 0;
+	}
 
-  .full-bleed,
-  .shiki {
-    width: 100%;
-    grid-column: 1 / 4;
-    margin: 1.5em 0;
-  }
+	/* logo SVG fill driven by CSS custom property for hover gradient swap */
+	.logo {
+		--fill: var(--color-foreground);
+	}
 
-  /* verse nav link styles */
-  .verse-nav a:not(.current) {
-    text-decoration: none;
-    color: var(--color-relay-red);
-  }
+	.logo:hover {
+		--fill: url(#logo-gradient);
+	}
 
-  .verse-nav a:hover {
-    text-decoration: underline;
-  }
-
-  /* logo SVG fill driven by CSS custom property for hover gradient swap */
-  .logo {
-    --fill: var(--color-foreground);
-  }
-
-  .logo:hover {
-    --fill: url(#logo-gradient);
-  }
-
-  .logo-path {
-    fill: var(--fill);
-  }
+	.logo-path {
+		fill: var(--fill);
+	}
 }

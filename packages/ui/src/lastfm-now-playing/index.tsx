@@ -2,19 +2,25 @@
 import { SiLastdotfm } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { getNowPlaying, type LastFmTrack } from "./actions";
+import type { LastFmTrack } from "./actions";
+
+async function fetchNowPlaying(): Promise<LastFmTrack | null> {
+	try {
+		const res = await fetch("/api/now-playing");
+		if (!res.ok) return null;
+		return await res.json();
+	} catch {
+		return null;
+	}
+}
 
 export default function LastFmNowPlaying() {
 	const [track, setTrack] = useState<LastFmTrack | null>(null);
 	const interval = useRef<ReturnType<typeof setInterval>>(null);
 
 	useEffect(() => {
-		getNowPlaying().then(setTrack);
-
-		interval.current = setInterval(() => {
-			getNowPlaying().then(setTrack);
-		}, 60_000);
-
+		fetchNowPlaying().then(setTrack);
+		interval.current = setInterval(() => fetchNowPlaying().then(setTrack), 60_000);
 		return () => {
 			if (interval.current) clearInterval(interval.current);
 		};
@@ -34,9 +40,7 @@ export default function LastFmNowPlaying() {
 			<span className="truncate">
 				<span className="font-medium font-mono">{track.name}</span>
 				{" — "}
-				<span className="opacity-70 font-emphasis">
-					{track.artist["#text"]}
-				</span>
+				<span className="opacity-70 font-emphasis">{track.artist["#text"]}</span>
 			</span>
 		</Link>
 	);

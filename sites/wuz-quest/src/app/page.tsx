@@ -4,12 +4,14 @@ import { getAllPosts } from "@/lib/posts";
 export default function Home() {
 	const posts = getAllPosts().filter((post) => !post.preview);
 	return (
-		<div className="space-y-4">
-			<h1 className="font-bold underline">Posts</h1>
-			<ul>
+		<div className="space-y-6">
+			<h1 className="font-emphasis font-bold text-2xl">Posts</h1>
+			<ul className="space-y-4">
 				{posts.map((post) => (
-					<li className="flex items-center gap-2" key={post.slug}>
-						<time className="text-foreground-faded"> {post.formattedDate}</time>
+					<li className="grid grid-cols-[auto_1fr] gap-4 items-center" key={post.slug}>
+						<time className="text-sm font-mono text-foreground-faded whitespace-nowrap">
+							{post.formattedDate}
+						</time>
 						<Link href={`/posts/${post.slug}`}>{post.title}</Link>
 					</li>
 				))}

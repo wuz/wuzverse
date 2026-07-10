@@ -6,10 +6,7 @@ const SinglePost = ({ post, date }: { post: Post; date: Date | null }) => {
 	return (
 		<li className="grid grid-cols-[auto_1fr] gap-4 items-center">
 			{date && (
-				<time
-					dateTime={date.toISOString()}
-					className="text-sm text-gray-haze font-mono"
-				>
+				<time dateTime={date.toISOString()} className="text-sm text-gray-haze font-mono">
 					{format(date, "MMM d, yyyy")}
 				</time>
 			)}

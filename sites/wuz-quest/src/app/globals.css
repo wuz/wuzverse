@@ -15,8 +15,7 @@
 }
 
 @theme {
-	/* Reset Tailwind defaults; palette inherited from @wuz/ui/base.css */
-	--color-*: initial;
+	/* Site-specific extension; palette inherited from @wuz/ui/base.css */
 	--color-foreground-faded: var(--color-foreground-faded-raw);
 }
 

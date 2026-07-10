@@ -19,7 +19,7 @@ const Verse = ({ currentSite }: { currentSite: Site }) => {
             href="https://wuz.sh"
             className={currentSite === "software" ? "current" : ""}
           >
-            software
+            SOFTWARE
           </Link>
           <Link
             href="https://wuz.quest"

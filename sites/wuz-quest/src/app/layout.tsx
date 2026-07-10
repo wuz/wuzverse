@@ -49,7 +49,7 @@ export default async function RootLayout({
         <RouteTracker />
         <div className="font-body max-w-[80ch] w-screen p-8 orchestration">
           <header
-            className="space-y-4 text-foreground-faded hover:text-foreground transition-colors"
+            className="space-y-4 text-foreground-faded hover:text-foreground transition-colors text-sm"
             style={{ "--stagger": 1 } as CSSProperties}
           >
             <nav className="flex items-center justify-between gap-2">
@@ -68,7 +68,8 @@ export default async function RootLayout({
             </Link>
             . Most of his games are available at{" "}
             <Link href="https://infinite-citadel.com">IC</Link>, but you can
-            also find a few on <Link href="https://wuz.itch.io">Itch</Link>.
+            also find a few on his personal{" "}
+            <Link href="https://wuz.itch.io">Itch</Link>.
           </header>
           <main
             className="my-8 border-y-1 border-y-shadow-aura py-8"

@@ -19,7 +19,6 @@ export async function getNowPlaying(apiKey: string): Promise<LastFmTrack | null>
 	try {
 		const res = await fetch(
 			`${LASTFM_API}?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${apiKey}&format=json&limit=1`,
-			{ next: { revalidate: 60 } },
 		);
 		if (!res.ok) return null;
 

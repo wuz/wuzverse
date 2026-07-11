@@ -8,14 +8,12 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default async function Image({ params: { slug } }: { params: { slug: string } }) {
+export default async function Image({ params }: {params: Promise<{slug:string}>}) {
+	const {slug} = await params;
 	const h = await headers();
 	const host = h.get("host");
 	const proto = h.get("x-forwarded-proto");
 	const post = getPostBySlug(slug);
-	if (!post) {
-		return null;
-	}
 
 	const baseUrl = `${proto}://${host}`;
 
@@ -36,9 +34,10 @@ export default async function Image({ params: { slug } }: { params: { slug: stri
 				padding: 32,
 				background: "black",
 				position: "relative",
+				fontFamily: "CommitMono",
 			}}
 		>
-			<img
+			{post?.slug && <img
 				alt=""
 				style={{
 					opacity: 0.5,
@@ -52,15 +51,15 @@ export default async function Image({ params: { slug } }: { params: { slug: stri
 					objectPosition: "center center",
 				}}
 				src={`${baseUrl}/post-images/${post.slug}/og.jpg`}
-			/>
+			/>}
 			<h1
 				style={{
 					textTransform: "uppercase",
 				}}
 			>
-				{post.title}
+				{post?.title ?? "A post on"}
 			</h1>
-			{post.excerpt && <h2>{post.excerpt}</h2>}
+			{post?.excerpt && <h2>{post.excerpt}</h2>}
 			<div
 				style={{
 					background: "#ec4899",
@@ -75,7 +74,7 @@ export default async function Image({ params: { slug } }: { params: { slug: stri
 			...size,
 			fonts: [
 				{
-					name: "Inter",
+					name: "CommitMono",
 					data: commitMono,
 				},
 			],

@@ -1,16 +1,6 @@
-  "image": "mcr.microsoft.com/vscode/devcontainers/base",
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/audacioustux/devcontainers/bun:1": {}
-  },
-  "forwardPorts": [3000],
-  "portsAttributes": {
-    "3000": {
-      "label": "App"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": ["esbenp.prettier-vscode"]
-    }
+    "ghcr.io/devcontainers-extra/features/bun-package:1": {}
   }
 }
